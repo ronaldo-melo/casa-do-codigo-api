@@ -14,22 +14,27 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private OffsetDateTime instance = OffsetDateTime.now();
+    private OffsetDateTime instance;
 
-    @Email
-    @NotNull
     @Column(unique = true)
     private String email;
 
-    @NotNull
-    @NotBlank
     private String name;
 
-    @NotNull
-    @NotBlank
-    @Column(length = 400)
     private String description;
+
+    @Deprecated
+    public Author() {
+    }
+
+    public Author(String email, String name, String description){
+
+        this.email = email;
+        this.name = name;
+        this.description = description;
+
+        this.instance = OffsetDateTime.now();
+    }
 
     public Long getId() {
         return id;
