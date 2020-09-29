@@ -34,4 +34,12 @@ public class AuthorController {
 
         return ResponseEntity.created(addressConsult).build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable Long id){
+
+        Author author = authorRepository.findById(id).get();
+
+        return ResponseEntity.ok(author);
+    }
 }
